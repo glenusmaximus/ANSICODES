@@ -1,7 +1,24 @@
 # http://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes
+# https://www.xfree86.org/4.8.0/ctlseqs.html
 
 set ESC=""
+set BEL=""
 set CSI="${ESC}["    # Control Sequence Introducer
+set OSC="${ESC}]"    # Operating System Command
+#set IND="${ESC}D"    # Index
+#set NEL="${ESC}E"    # Next Line
+#set HTS="${ESC}H"    # Tab Set
+#set RI ="${ESC}M"    # Reverse Index
+#set SS2="${ESC}N"    # Single Shift Select of G2 Character Set
+#set SS3="${ESC}O"    # Single Shift Select of G3 Character Set
+#set DCS="${ESC}P"    # Device Control String
+#set SPA="${ESC}V"    # Start of Guarded Area
+#set EPA="${ESC}W"    # End of Guarded Area
+#set SOS="${ESC}X"    # Start of String
+#set PM ="${ESC}^"    # Privacy Message
+#set ST ="${ESC}\"    # String Terminator
+#set APC="${ESC}_"    # Application Program Command
+#set RIS="${ESC}c"    # Full Reset
 
 set RESET="${CSI}0m"
 set BOLD="${CSI}1m"
@@ -86,9 +103,23 @@ set PRIVACYMSG="${ESC}"+'^'
 # PRIVACYMSGOFF doesn't appear to work correctly. Need to print $ESC $BACKSLASH
 set PRIVACYMSGOFF="${ESC}"+$BACKSLASH
 
+# Operating System Controls
+# The following commands can be used by adding a string and terminated with $BEL
+# e.g. echo -n "$XTERMWINNAME$USER@$HOST$BEL" will set the window name.
+set XTERMICONWINNAME="${OSC}0;" # Change Icon Name and Window Title
+set XTERMICONNAME="${OSC}1;"
+set XTERMWINNAME="${OSC}2;"
+
+# Print "Google" using the Google colors
 set FGGOOGLE="${FGBLUE}G${FGRED}o${FGYELLOW}o${FGBLUE}g${FGGREEN}l${FGRED}e$RESET"
 
 # Heavy Check Mark (U+2714)
 set TICK="${FGGREEN}✔$RESET"
 # Heavy (Ballot) X Mark (U+2718)
 set XMARK="${FGRED}✘$RESET"
+
+# Need to find out how to encode for tcsh
+# set UPLEFT=$(printf "\xe2\x86\xb0")
+# set UPRIGHT=$(printf "\xe2\x86\xb1")
+# set DOWNRIGHT=$(printf "\xe2\x86\xb3")
+# set RIGHTDOWN=$(printf "\xe2\x86\xb4")

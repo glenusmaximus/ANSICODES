@@ -1,8 +1,28 @@
 # http://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes
+#
+# To use, include the following:
+#
+# . ANSICODES.sh
 
 ESC=""
+BEL=""
 #ESC="\033"
 CSI="${ESC}["    # Control Sequence Introducer
+OSC="${ESC}]"    # Operating System Command
+#IND="${ESC}D"    # Index
+#NEL="${ESC}E"    # Next Line
+#HTS="${ESC}H"    # Tab Set
+#RI ="${ESC}M"    # Reverse Index
+#SS2="${ESC}N"    # Single Shift Select of G2 Character Set
+#SS3="${ESC}O"    # Single Shift Select of G3 Character Set
+#DCS="${ESC}P"    # Device Control String
+#SPA="${ESC}V"    # Start of Guarded Area
+#EPA="${ESC}W"    # End of Guarded Area
+#SOS="${ESC}X"    # Start of String
+#PM ="${ESC}^"    # Privacy Message
+#ST ="${ESC}\"    # String Terminator
+#APC="${ESC}_"    # Application Program Command
+#RIS="${ESC}c"    # Full Reset
 
 RESET="${CSI}0m"
 BOLD="${CSI}1m"
@@ -83,7 +103,14 @@ PRIVACYMSG="${ESC}"+'^'
 # PRIVACYMSGOFF doesn't appear to work correctly. Need to print $ESC $BACKSLASH
 PRIVACYMSGOFF="${ESC}"+$BACKSLASH
 
-# Special characters/strings
+# Operating System Controls
+# The following commands can be used by adding a string and terminated with $BEL
+# e.g. echo -n "$XTERMWINNAME$USER@$HOST$BEL" will set the window name.
+XTERMICONWINNAME="${OSC}0;" # Change Icon Name and Window Title
+XTERMICONNAME="${OSC}1;"    # Change Icon Name
+XTERMWINNAME="${OSC}2;"     # Change Window Title
+
+# Print "Google" using the Google colors
 FGGOOGLE="${FGBLUE}G${FGRED}o${FGYELLOW}o${FGBLUE}g${FGGREEN}l${FGRED}e$RESET"
 
 # Heavy Check Mark (U+2714)

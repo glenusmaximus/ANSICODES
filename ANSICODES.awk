@@ -1,6 +1,7 @@
 # Include this in a gawk script using the following command
-#   @include "/home/user/bin/ANSICODES.awk"
+#   @include "ANSICODES.awk"
 # or using the -i command line option
+#   gawk -i ANSICODES.awk ...
 #
 # https://www.gnu.org/software/gawk/manual/html_node/Include-Files.html
 
@@ -8,6 +9,8 @@ BEGIN {
 # http://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes
 
 CSI="["    # Control Sequence Introducer
+OSC="]"    # Operating System Command
+BEL=""
 
 RESET=CSI "0m"
 BOLD=CSI "1m"
@@ -89,8 +92,19 @@ CUB=CSI "1D" # Cursor back 1
 PRIVACYMSG= "^"       # Privacy message http://www.gnu.org/software/screen/manual/html_node/Privacy-Message.html#Privacy-Message
 PRIVACYMSGOFF= "\\" 
 
+# Operating System Controls
+# The following commands can be used by adding a string and terminated with $BEL
+# e.g. echo -n "$XTERMWINNAME$USER@$HOST$BEL" will set the window name.
+XTERMICONWINNAME=OSC "0;" # Change Icon Name and Window Title
+XTERMICONNAME=OSC "1;"
+XTERMWINNAME=OSC "2;"
+
+# Print "Google" using the Google colors
+FGGOOGLE=FGBLUE "G" FGRED "o" FGYELLOW "o" FGBLUE "g" FGGREEN "l" FGRED "e" RESET
+
 # Heavy Check Mark (U+2714)
 TICK=FGGREEN "✔" RESET
 # Heavy (Ballot) X Mark (U+2718)
 XMARK=FGRED "✘" RESET
+
 }
