@@ -1,5 +1,8 @@
-# http://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes
-# https://www.xfree86.org/4.8.0/ctlseqs.html
+# https://github.com/glenusmaximus/ANSICODES
+#
+# Use with the following command:
+#
+#   source ANSICODES.csh
 
 set ESC=""
 set BEL=""
@@ -56,9 +59,10 @@ set BGDEFAULT="${CSI}49m"
 
 # See 256 Colors section of http://bitmote.com/index.php?post/2012/11/19/Using-ANSI-Color-Codes-to-Colorize-Your-Bash-Prompt-on-Linux
 #FG256="${CSI}38;5;Xm"
-#BG256="${CSI}48;5;#m" where # is 0-255
+#BG256="${CSI}48;5;Xm" where X is 0-255
 # Use ./ansi-color to help generate these
-set FGGRAY3="${CSI}38;5;m"
+set FGGRAY3="${CSI}38;5;232m"
+set BGGRAY3="${CSI}48;5;232m"
 set FGCHARCOAL="${CSI}38;5;238m"
 set BGCHARCOAL="${CSI}48;5;238m"
 set FGORANGE="${CSI}38;5;202m"
@@ -109,6 +113,8 @@ set PRIVACYMSGOFF="${ESC}"+$BACKSLASH
 set XTERMICONWINNAME="${OSC}0;" # Change Icon Name and Window Title
 set XTERMICONNAME="${OSC}1;"
 set XTERMWINNAME="${OSC}2;"
+
+# Special characters/strings
 
 # Print "Google" using the Google colors
 set FGGOOGLE="${FGBLUE}G${FGRED}o${FGYELLOW}o${FGBLUE}g${FGGREEN}l${FGRED}e$RESET"

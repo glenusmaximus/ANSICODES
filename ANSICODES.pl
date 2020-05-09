@@ -1,4 +1,5 @@
-# http://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes
+# https://github.com/glenusmaximus/ANSICODES
+#
 # require "ANSICODES.pl";
 
 $BEL                = "\x07";
@@ -57,9 +58,10 @@ $BGDEFAULT          = $CSI."49m";
 
 # See 256 Colors section of http://bitmote.com/index.php?post/2012/11/19/Using-ANSI-Color-Codes-to-Colorize-Your-Bash-Prompt-on-Linux
 #FG256="${CSI}38;5;Xm"
-#BG256="${CSI}48;5;#m" where # is 0-255
+#BG256="${CSI}48;5;Xm" where X is 0-255
 # Use ./ansi-color to help generate these
-$FGGRAY3            = $CSI."38;5;m";
+$FGGRAY3            = $CSI."38;5;232m";
+$BGGRAY3            = $CSI."48;5;232m";
 $FGCHARCOAL         = $CSI."38;5;238m";
 $BGCHARCOAL         = $CSI."48;5;238m";
 $FGORANGE           = $CSI."38;5;202m";

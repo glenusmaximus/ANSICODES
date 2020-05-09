@@ -1,10 +1,10 @@
-# Include this in python file using 
+# https://github.com/glenusmaximus/ANSICODES
+#
+# Include this in python file using:
 #
 # import sys
-# sys.path.append('/path/to/location')
+# sys.path.append('/path/to/ANSICODES.py')
 # from ANSICODES import *
-#
-# http://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes
 
 ESC=''
 BEL=''
@@ -61,10 +61,11 @@ BGWHITE=CSI + "47m"
 BGDEFAULT=CSI + "49m"
 
 # See 256 Colors section of http://bitmote.com/index.php?post/2012/11/19/Using-ANSI-Color-Codes-to-Colorize-Your-Bash-Prompt-on-Linux
-#FG256="${CSI}38;5;Xm"
-#BG256="${CSI}48;5;#m" where # is 0-255
+#FG256=CSI + "38;5;Xm"
+#BG256=CSI + "48;5;Xm" where X is 0-255
 # Use ./ansi-color to help generate these
-FGGRAY3=CSI + "38;5;m"
+FGGRAY3=CSI + "38;5;232m"
+BGGRAY3=CSI + "48;5;232m"
 FGCHARCOAL=CSI + "38;5;238m"
 BGCHARCOAL=CSI + "48;5;238m"
 FGORANGE=CSI + "38;5;202m"
@@ -109,9 +110,14 @@ PRIVACYMSGOFF= "\\"
 # Operating System Controls
 # The following commands can be used by adding a string and terminated with $BEL
 # e.g. "print XTERMWINNAME + 'USER@HOST' + BEL" will set the window name.
-XTERMICONWINNAME="${OSC}0;" # Change Icon Name and Window Title
-XTERMICONNAME="${OSC}1;"    # Change Icon Name
-XTERMWINNAME="${OSC}2;"     # Change Window Title
+XTERMICONWINNAME=OSC + "0;" # Change Icon Name and Window Title
+XTERMICONNAME=OSC + "1;"    # Change Icon Name
+XTERMWINNAME=OSC + "2;"     # Change Window Title
+
+# Special characters/strings
+
+# Print "Google" using the Google colors
+FGGOOGLE=FGBLUE + "G" + FGRED + "o" + FGYELLOW + "o" + FGBLUE + "g" + FGGREEN + "l" + FGRED + "e" + RESET
 
 # Heavy Check Mark (U+2714)
 TICK=FGGREEN + u'\u2714' + RESET

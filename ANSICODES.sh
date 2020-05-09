@@ -1,4 +1,4 @@
-# http://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes
+# https://github.com/glenusmaximus/ANSICODES
 #
 # To use, include the following:
 #
@@ -7,6 +7,8 @@
 ESC=""
 BEL=""
 #ESC="\033"
+
+# https://en.wikipedia.org/wiki/ANSI_escape_code#CSI_sequences
 CSI="${ESC}["    # Control Sequence Introducer
 OSC="${ESC}]"    # Operating System Command
 #IND="${ESC}D"    # Index
@@ -60,7 +62,7 @@ BGDEFAULT="${CSI}49m"
 
 # See 256 Colors section of http://bitmote.com/index.php?post/2012/11/19/Using-ANSI-Color-Codes-to-Colorize-Your-Bash-Prompt-on-Linux
 #FG256="${CSI}38;5;Xm"
-#BG256="${CSI}48;5;#m" where # is 0-255
+#BG256="${CSI}48;5;Xm" where X is 0-255
 #
 # Usage: ANSI256SetVar number NAME
 # Puts fg and bg codes into the variables FGNAME and BGNAME respectively
@@ -72,7 +74,7 @@ ANSI256SetVar() {
 }
 
 # Use ./ansi-color to help generate these
-FGGRAY3="${CSI}38;5;m"
+ANSI256SetVar 232 GRAY3
 ANSI256SetVar 238 CHARCOAL
 ANSI256SetVar 202 ORANGE
 ANSI256SetVar 199 HOTPINK
@@ -89,8 +91,7 @@ ANSI256SetVar 183 MAUVE
 ANSI256SetVar 229 CREAM
 ANSI256SetVar 228 PALEYELLOW
 ANSI256SetVar  17 DARKBLUE
-FGCREAM="${CSI}38;5;229m"
-BGCREAM="${CSI}48;5;229m"
+ANSI256SetVar 229 CREAM
 
 CUU="${CSI}1A" # Cursor up 1
 CUD="${CSI}1B" # Cursor down 1
@@ -109,6 +110,8 @@ PRIVACYMSGOFF="${ESC}"+$BACKSLASH
 XTERMICONWINNAME="${OSC}0;" # Change Icon Name and Window Title
 XTERMICONNAME="${OSC}1;"    # Change Icon Name
 XTERMWINNAME="${OSC}2;"     # Change Window Title
+
+# Special characters/strings
 
 # Print "Google" using the Google colors
 FGGOOGLE="${FGBLUE}G${FGRED}o${FGYELLOW}o${FGBLUE}g${FGGREEN}l${FGRED}e$RESET"

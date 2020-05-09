@@ -1,3 +1,5 @@
+# https://github.com/glenusmaximus/ANSICODES
+#
 # Include this in a gawk script using the following command
 #   @include "ANSICODES.awk"
 # or using the -i command line option
@@ -48,9 +50,10 @@ BGDEFAULT=CSI "49m"
 
 # See 256 Colors section of http://bitmote.com/index.php?post/2012/11/19/Using-ANSI-Color-Codes-to-Colorize-Your-Bash-Prompt-on-Linux
 #FG256="${CSI}38;5;Xm"
-#BG256="${CSI}48;5;#m" where # is 0-255
+#BG256="${CSI}48;5;Xm" where X is 0-255
 # Use ./ansi-color to help generate these
-FGGRAY3=CSI "38;5;m"
+FGGRAY3=CSI "38;5;232m"
+BGGRAY3=CSI "48;5;232m"
 FGCHARCOAL=CSI "38;5;238m"
 BGCHARCOAL=CSI "48;5;238m"
 FGORANGE=CSI "38;5;202m"
@@ -99,6 +102,8 @@ XTERMICONWINNAME=OSC "0;" # Change Icon Name and Window Title
 XTERMICONNAME=OSC "1;"
 XTERMWINNAME=OSC "2;"
 
+# Special characters/strings
+
 # Print "Google" using the Google colors
 FGGOOGLE=FGBLUE "G" FGRED "o" FGYELLOW "o" FGBLUE "g" FGGREEN "l" FGRED "e" RESET
 
@@ -106,5 +111,4 @@ FGGOOGLE=FGBLUE "G" FGRED "o" FGYELLOW "o" FGBLUE "g" FGGREEN "l" FGRED "e" RESE
 TICK=FGGREEN "✔" RESET
 # Heavy (Ballot) X Mark (U+2718)
 XMARK=FGRED "✘" RESET
-
 }
